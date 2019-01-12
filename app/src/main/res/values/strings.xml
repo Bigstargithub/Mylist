@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">성경말씀</string>
+    <string name="listview_create">ListView Create</string>
+</resources>
