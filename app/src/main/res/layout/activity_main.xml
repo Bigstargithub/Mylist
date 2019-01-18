@@ -6,23 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/listview_create" />
-    <ListView
-        android:id="@+id/List_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </ListView>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="147dp"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="127dp"
+            android:text="@string/BibleVerse"
+            android:gravity="center_horizontal"
+            android:textSize="24sp" />
+
+        <ListView
+            android:id="@+id/List_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:entries="@array/Biblelist" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
