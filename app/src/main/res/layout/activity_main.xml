@@ -12,17 +12,6 @@
         android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="147dp"
-            android:layout_height="36dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="127dp"
-            android:text="@string/BibleVerse"
-            android:gravity="center_horizontal"
-            android:textSize="24sp" />
-
         <ListView
             android:id="@+id/List_view"
             android:layout_width="match_parent"
