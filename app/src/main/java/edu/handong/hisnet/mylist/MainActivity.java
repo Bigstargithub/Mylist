@@ -1,6 +1,8 @@
 package edu.handong.hisnet.mylist;
 
 import android.content.Intent;
+import android.os.Environment;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,11 +13,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 
-
+    static public String DataRoot;
     static int BibleNumber;
-
     public static final int[] numOfChapters ={50,40,27,36,34,24,21,4,31,24,
             22,25,29,36,10,13,10,42,150,31,
             12,8,66,52,5,48,12,14,3,9,
@@ -34,6 +37,25 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, Biblelist);
 
+       String ext = Environment.getExternalStorageState();
+       if(ext.equals(Environment.MEDIA_MOUNTED))
+       {
+           DataRoot = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "hanbyul" ;
+       }
+       else
+       {
+           DataRoot = Environment.MEDIA_UNMOUNTED;
+       }
+
+       File file = new File(DataRoot);
+       if(!file.exists())
+       {
+           file.mkdirs();
+       }
+
+
+
+
         // ListView의 constructor를 만든다.
         final ListView listView = (ListView) findViewById(R.id.List_view);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -41,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 VerseNum = numOfChapters[i];
                 biblename = Biblelist[i];
+
 
                 Intent intent = new Intent(MainActivity.this, booklist.class);
                 intent.putExtra("bibleNumber",i);
@@ -54,6 +77,26 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public boolean isExternalStroageWritable(){
+        String state = Environment.getExternalStorageState();
+        if(Environment.MEDIA_MOUNTED.equals(state))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isExternalStorageReadable() {
+        String state = Environment.getExternalStorageState();
+        if(Environment.MEDIA_MOUNTED.equals(state) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state))
+        {
+            return true;
+        }
+        return false;
+    }
+
+
 }
 
 
